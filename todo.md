@@ -62,14 +62,14 @@
 
 ## Feature 9: Visão Multi-Perfil
 - [x] Impacto financeiro em R$ nos traces
-- [ ] Toggle entre visão técnica/negócio/executiva (enhancement)
+- [x] Toggle entre visão técnica/negócio/executiva (Developer/Negócio/Executivo)
 
 ## Feature 10: Gestão de Projetos e Integrações
 - [x] Lista de projetos por cliente/ambiente
 - [x] Criação de projetos (backend)
-- [ ] Modal de criação de projeto (frontend)
-- [ ] Configuração de integrações (GitHub, Datadog, Kafka, AWS)
-- [ ] Geração de API key para SDK
+- [x] Modal de criação de projeto (frontend)
+- [x] Configuração de integrações (GitHub, Datadog, Kafka, AWS, Slack, LangFuse, LangSmith)
+- [x] Geração de API key para SDK com cópia e revogação
 
 ## Landing Page
 - [x] Hero section com CTA

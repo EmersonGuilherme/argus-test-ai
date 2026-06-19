@@ -199,6 +199,78 @@ export const appRouter = router({
       if (!db) return [];
       return db.select().from(integrations).where(eq(integrations.projectId, input.projectId));
     }),
+
+    create: protectedProcedure.input(z.object({
+      projectId: z.number(),
+      type: z.enum(["github", "datadog", "kafka", "aws", "slack", "langfuse", "langsmith"]),
+      name: z.string().min(1),
+      config: z.record(z.string(), z.string()).optional(),
+    })).mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) return null;
+      const [result] = await db.insert(integrations).values({
+        projectId: input.projectId,
+        type: input.type,
+        name: input.name,
+        config: input.config,
+      }).$returningId();
+      return result;
+    }),
+
+    toggle: protectedProcedure.input(z.object({ id: z.number(), isActive: z.boolean() })).mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) return { success: false };
+      await db.update(integrations).set({ isActive: input.isActive }).where(eq(integrations.id, input.id));
+      return { success: true };
+    }),
+  }),
+
+  // API Keys
+  keys: router({
+    list: protectedProcedure.input(z.object({ projectId: z.number() })).query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) return [];
+      return db.select({
+        id: apiKeys.id,
+        name: apiKeys.name,
+        keyPrefix: apiKeys.keyPrefix,
+        isActive: apiKeys.isActive,
+        lastUsedAt: apiKeys.lastUsedAt,
+        expiresAt: apiKeys.expiresAt,
+        createdAt: apiKeys.createdAt,
+      }).from(apiKeys).where(eq(apiKeys.projectId, input.projectId)).orderBy(desc(apiKeys.createdAt));
+    }),
+
+    generate: protectedProcedure.input(z.object({
+      projectId: z.number(),
+      name: z.string().min(1),
+    })).mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) return null;
+      // Generate a random API key
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let key = 'sk-atp-';
+      for (let i = 0; i < 40; i++) {
+        key += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      const prefix = key.substring(0, 12);
+      // Simple hash for storage (in production use bcrypt)
+      const hash = Buffer.from(key).toString('base64');
+      const [result] = await db.insert(apiKeys).values({
+        projectId: input.projectId,
+        name: input.name,
+        keyHash: hash,
+        keyPrefix: prefix,
+      }).$returningId();
+      return { id: result.id, key, prefix };
+    }),
+
+    revoke: protectedProcedure.input(z.object({ id: z.number() })).mutation(async ({ input }) => {
+      const db = await getDb();
+      if (!db) return { success: false };
+      await db.update(apiKeys).set({ isActive: false }).where(eq(apiKeys.id, input.id));
+      return { success: true };
+    }),
   }),
 
   // Seed demo data
