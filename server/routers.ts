@@ -8,6 +8,7 @@ import { seedDemoData } from "./seed";
 import { projects, traces, traceSteps, evaluations, securityTests, alerts, promptSuggestions, integrations, apiKeys } from "../drizzle/schema";
 import { eq, desc, sql, and, count } from "drizzle-orm";
 import { autonomousRouter } from "./routers/autonomous";
+import { featuresRouter } from "./routers/features";
 
 export const appRouter = router({
   system: systemRouter,
@@ -284,6 +285,8 @@ export const appRouter = router({
 
   // Autonomous testing, AI, webhooks, orgs, privacy
   autonomous: autonomousRouter,
+  // Validation, MCP Security, Audit Trail, Shadow AI
+  features: featuresRouter,
 });
 
 export type AppRouter = typeof appRouter;
