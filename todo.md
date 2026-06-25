@@ -75,3 +75,54 @@
 - [x] Hero section com CTA
 - [x] Feature grid com 6 funcionalidades
 - [x] Redirect automático se autenticado
+
+## Fase 6 — Plataforma Comercial Completa
+
+### A. Compliance LGPD
+- [ ] Página de Compliance LGPD com checklist (Art. 6, 7, 11, 18, 37, 38, 41, 46)
+- [ ] Masking automático de PII nos traces (CPF, email, telefone, cartão, nome)
+- [ ] Políticas de retenção de dados configurável (30/60/90/180 dias)
+- [ ] Exclusão automática de dados expirados
+- [ ] Relatório DPIA gerado por IA
+- [ ] Log de consentimento e base legal
+
+### B. Testes Autônomos com IA
+- [ ] Motor de testes autônomos (scheduled/on-demand)
+- [ ] Geração automática de casos de teste via IA
+- [ ] Red-teaming automático (prompt injection, jailbreak, data extraction)
+- [ ] Regression testing (compara versões do modelo)
+- [ ] Fuzzing inteligente (inputs edge-case)
+- [ ] Relatório automático de cada rodada com score e recomendações
+
+### C. IA Integrada ao Projeto
+- [ ] IA para gerar relatórios de compliance automaticamente
+- [ ] IA para analisar padrões nos traces e sugerir melhorias
+- [ ] IA como classificador de severidade dos achados
+- [ ] IA para sumarizar resultados em linguagem executiva
+- [ ] Chat assistente interno
+
+### D. Landing Page Pública
+- [ ] Página de marketing profissional (Hero, Features, Pricing, FAQ, CTA)
+- [ ] Responsiva e otimizada para conversão
+
+### E. Documentação Pública
+- [ ] Página /docs com guias de integração
+- [ ] Referência completa da API REST
+- [ ] Exemplos SDK Python e TypeScript
+- [ ] Tutoriais de setup (Docker, CI/CD, OpenTelemetry)
+
+### F. Multi-tenancy e Organizações
+- [ ] Tabela de organizações com convites
+- [ ] Roles: owner, admin, editor, viewer
+- [ ] Isolamento de dados por organização
+- [ ] Página de gestão de time
+
+### G. Webhooks e Notificações
+- [ ] Sistema de webhooks configurável (Slack, Discord, email)
+- [ ] Alertas automáticos para eventos críticos
+- [ ] Página de configuração de notificações
+
+### H. Dashboard com Dados Reais
+- [ ] Conectar endpoints de ingestão ao dashboard
+- [ ] Métricas em tempo real (traces/min, latência p50/p95/p99, taxa de erro)
+- [ ] Gráficos históricos com filtros de data

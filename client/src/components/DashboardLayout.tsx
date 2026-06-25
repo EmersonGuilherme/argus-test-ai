@@ -32,6 +32,17 @@ import {
   FolderOpen,
   LogOut,
   PanelLeft,
+  ShieldCheck,
+  Server,
+  Link2,
+  Eye,
+  FileCheck,
+  Workflow,
+  Bot,
+  Lock,
+  Webhook,
+  Building2,
+  BookOpen,
 } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
@@ -53,11 +64,22 @@ const menuItems = [
   { icon: Activity, label: "Dashboard", path: "/dashboard" },
   { icon: GitBranch, label: "Traces", path: "/traces" },
   { icon: BarChart3, label: "Avaliações", path: "/evaluations" },
+  { icon: Bot, label: "Testes Autônomos", path: "/autonomous" },
   { icon: Shield, label: "Segurança", path: "/security" },
+  { icon: ShieldCheck, label: "Validação", path: "/validation" },
+  { icon: Server, label: "MCP Security", path: "/mcp-security" },
+  { icon: Link2, label: "Audit Trail", path: "/audit-trail" },
+  { icon: Eye, label: "Shadow AI", path: "/shadow-ai" },
+  { icon: FileCheck, label: "Compliance", path: "/compliance" },
+  { icon: Lock, label: "LGPD", path: "/privacy" },
+  { icon: Workflow, label: "CI/CD Gates", path: "/cicd" },
   { icon: Brain, label: "Modelos", path: "/models" },
-  { icon: Bell, label: "Alertas", path: "/alerts" },
   { icon: Sparkles, label: "Prompts", path: "/prompts" },
+  { icon: Bell, label: "Alertas", path: "/alerts" },
+  { icon: Webhook, label: "Webhooks", path: "/webhooks" },
+  { icon: Building2, label: "Organizações", path: "/organizations" },
   { icon: FolderOpen, label: "Projetos", path: "/projects" },
+  { icon: BookOpen, label: "Documentação", path: "/docs" },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";

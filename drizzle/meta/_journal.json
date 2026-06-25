@@ -15,6 +15,13 @@
       "when": 1781905627459,
       "tag": "0001_magical_fabian_cortez",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1782407008079,
+      "tag": "0002_broad_grandmaster",
+      "breakpoints": true
     }
   ]
 }
